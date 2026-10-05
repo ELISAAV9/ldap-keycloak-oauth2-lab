@@ -1,0 +1,15 @@
+[DEFAULT]
+enabled = false
+
+[http-flood]
+enabled  = true
+port     = http,https
+filter   = http-flood
+logpath  = /var/log/nginx/access.log
+findtime = 10
+maxretry = 60
+bantime  = 600
+bantime.increment = true
+bantime.factor = 2
+bantime.maxtime = 86400
+action   = iptables-allports[name=http-flood]
