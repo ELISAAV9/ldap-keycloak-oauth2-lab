@@ -1,0 +1,11 @@
+fix: deshabilitar Swagger, ReDoc y OpenAPI en produccion
+
+Nuclei detecto que /docs (Swagger UI), /redoc (ReDoc) y
+/openapi.json estaban expuestos publicamente sin autenticacion
+(swagger-api, redoc-api-docs, openapi; CWE-200), revelando la
+estructura completa de la API, sus endpoints y hasta las URLs
+reales de autenticacion de Keycloak.
+
+Se deshabilitan por defecto usando docs_url/redoc_url/openapi_url
+en None. Solo se activan si ENVIRONMENT=development, controlado
+por variable de entorno.

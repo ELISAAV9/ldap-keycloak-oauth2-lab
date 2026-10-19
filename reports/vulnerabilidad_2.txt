@@ -1,0 +1,11 @@
+fix: agregar cabeceras de seguridad HTTP faltantes
+
+Nuclei detecto 9 cabeceras de seguridad ausentes en las respuestas
+del FastAPI (http-missing-security-headers, CWE-693): X-Frame-Options,
+X-Content-Type-Options, Referrer-Policy, Content-Security-Policy,
+Permissions-Policy, Cross-Origin-Opener-Policy,
+Cross-Origin-Resource-Policy, Cross-Origin-Embedder-Policy,
+X-Permitted-Cross-Domain-Policies.
+
+Se agrega un SecurityHeadersMiddleware que inyecta las 10 cabeceras
+recomendadas (incluyendo HSTS) en todas las respuestas de la API.
